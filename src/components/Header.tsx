@@ -1,11 +1,23 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Header() {
   return (
     <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#243047] px-4 sm:px-6 lg:px-10 py-4 bg-[#111722] sticky top-0 z-50 backdrop-blur-sm bg-opacity-95">
-      <div className="flex items-center gap-4 text-white">
-        <img src="/images/fintax-logo.svg" alt="FinTax Solutions" className="h-8 lg:h-10 w-auto" />
-      </div>
+      <Link href="/" className="flex items-center gap-3 text-white hover:opacity-80 transition-opacity">
+        <Image 
+          src="/favicon.svg" 
+          alt="FinTax Solutions" 
+          width={32}
+          height={32}
+          className="h-8 lg:h-10 w-8 lg:w-10"
+          priority
+        />
+        <div className="flex flex-col">
+          <span className="text-lg lg:text-xl font-bold text-white leading-tight">FinTax</span>
+          <span className="text-xs lg:text-sm text-[#93a6c8] leading-tight">Solutions</span>
+        </div>
+      </Link>
       <div className="hidden lg:flex flex-1 justify-end gap-8">
         <div className="flex items-center gap-9">
           <Link className="text-white text-sm lg:text-base font-medium leading-normal hover:text-[#1650bb] transition-colors" href="/">Home</Link>
