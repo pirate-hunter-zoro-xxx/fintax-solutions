@@ -1,8 +1,120 @@
+'use client';
+
+import { useState } from 'react';
+
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="min-h-screen bg-[#111722] text-white">
+      {/* Header */}
+      <header className="relative bg-[#111722] border-b border-[#243047]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4">
+            {/* Logo */}
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <h1 className="text-xl font-bold text-white">FinTax Solutions</h1>
+              </div>
+            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex space-x-8">
+              <a href="#home" className="text-[#93a6c8] hover:text-white transition-colors">Home</a>
+              <a href="#services" className="text-[#93a6c8] hover:text-white transition-colors">Services</a>
+              <a href="#about" className="text-[#93a6c8] hover:text-white transition-colors">About</a>
+              <a href="#contact" className="text-[#93a6c8] hover:text-white transition-colors">Contact</a>
+            </nav>
+
+            {/* CTA Button */}
+            <div className="hidden md:flex">
+              <button className="bg-[#1650bb] hover:bg-[#1446a0] text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                Get Started
+              </button>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={toggleMenu}
+                className="text-[#93a6c8] hover:text-white focus:outline-none focus:text-white transition-colors"
+                aria-label="Toggle menu"
+              >
+                <svg
+                  className="h-6 w-6"
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  {isMenuOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  )}
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-[#1a2332] border-t border-[#243047]">
+            <div className="px-4 pt-2 pb-4 space-y-2">
+              <a 
+                href="#home" 
+                className="block px-3 py-2 text-[#93a6c8] hover:text-white hover:bg-[#243047] rounded-md transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </a>
+              <a 
+                href="#services" 
+                className="block px-3 py-2 text-[#93a6c8] hover:text-white hover:bg-[#243047] rounded-md transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Services
+              </a>
+              <a 
+                href="#about" 
+                className="block px-3 py-2 text-[#93a6c8] hover:text-white hover:bg-[#243047] rounded-md transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About
+              </a>
+              <a 
+                href="#contact" 
+                className="block px-3 py-2 text-[#93a6c8] hover:text-white hover:bg-[#243047] rounded-md transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact
+              </a>
+              <div className="pt-2">
+                <button className="w-full bg-[#1650bb] hover:bg-[#1446a0] text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                  Get Started
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </header>
+
       {/* Hero Section */}
-      <div className="px-4 sm:px-10 lg:px-20 xl:px-40 flex justify-center py-8 lg:py-12">
+      <section id="home" className="px-4 sm:px-10 lg:px-20 xl:px-40 flex justify-center py-8 lg:py-12">
         <div className="max-w-7xl w-full">
           <div className="@container">
             <div className="@[480px]:p-4">
@@ -31,8 +143,12 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Our Impact Section */}
+      {/* Our Impact Section */}
+      <section id="about" className="px-4 sm:px-10 lg:px-20 xl:px-40 flex justify-center">
+        <div className="max-w-7xl w-full">
           <div className="py-8 lg:py-16">
             <div className="text-center mb-8 lg:mb-12">
               <h2 className="text-white text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-[-0.015em] mb-4">Our Impact</h2>
@@ -62,8 +178,12 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Services Section */}
+      {/* Services Section */}
+      <section id="services" className="px-4 sm:px-10 lg:px-20 xl:px-40 flex justify-center">
+        <div className="max-w-7xl w-full">
           <div className="py-8 lg:py-16">
             <div className="text-center mb-8 lg:mb-12">
               <h2 className="text-white text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-[-0.015em] mb-4">Our Services</h2>
@@ -182,8 +302,12 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Why Choose Us Section */}
+      {/* Why Choose Us Section */}
+      <section id="contact" className="px-4 sm:px-10 lg:px-20 xl:px-40 flex justify-center">
+        <div className="max-w-7xl w-full">
           <div className="py-8 lg:py-16">
             <div className="text-center mb-8 lg:mb-12">
               <h2 className="text-white text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-[-0.015em] mb-4">Why Choose FinTax Solutions</h2>
@@ -271,7 +395,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
